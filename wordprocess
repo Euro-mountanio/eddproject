@@ -1,0 +1,39 @@
+
+import AccessModel
+path= ""
+path2=""
+
+# split the sentence into its individual word and finds their types 
+def wordprocessing(sentence):
+    kindlist={}
+    splitsentence =sentence.split()
+    for itm in splitsentence :
+        kind = wordtype(itm)
+        kindlist.update(kind)
+    sentence_type = AccessModel.getOrder(kindlist, path, path2)  
+      
+
+        
+# gets the type of the word give 
+def wordtype(itm):
+    word_type = AccessModel.get_type(itm)
+    return word_type
+# generate a response to a question
+def generateQuestinResponse(sentence_type):
+    AccessModel.Question_history(sentence_type)
+    AccessModel.FindSVO(sentence_type)  
+def  IsResponseRequire(sentence_type):
+    if sentence_type is "question":
+        generateQuestinResponse(sentence_type)
+
+
+
+
+
+
+
+        
+
+
+
+    
